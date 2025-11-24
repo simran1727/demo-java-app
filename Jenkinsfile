@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK21'
-        maven 'Maven3'
+        jdk 'JDK21'        // JDK name from Jenkins Global Tool Configuration
+        maven 'Maven3'     // Maven name from Jenkins Global Tool Configuration
     }
 
     stages {
@@ -12,15 +12,21 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build & Test') {
+
+        stage('Build & Deploy to Nexus') {
             steps {
-                bat 'mvn -B clean package'
+                // Use your local settings.xml so Maven knows Nexus credentials
+                bat 'mvn -B -s "C:\\Users\\Aerika\\.m2\\settings.xml" clean deploy'
             }
         }
     }
+
     post {
         success {
-            archiveArtifacts artifacts: 'target/**/*.jar', fingerprint: true
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+        }
+        always {
+            junit 'target/surefire-reports/*.xml'
         }
     }
 }
