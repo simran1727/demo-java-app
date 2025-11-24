@@ -5,7 +5,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>demo-java-app</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>demo-java-app</name>
@@ -34,4 +34,11 @@
             </plugin>
         </plugins>
     </build>
+<distributionManagement>
+  <repository>
+    <id>admin</id>
+    <url>http://localhost:8081/repository/demo-releases/</url>
+  </repository>
+</distributionManagement>
+
 </project>
