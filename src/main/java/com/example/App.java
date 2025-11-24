@@ -2,6 +2,6 @@ package com.example;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello from Aerika's updated Java app – version 2!");
+        System.out.println("Hello from CI build!");
     }
 }
