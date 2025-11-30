@@ -1,12 +1,15 @@
 package com.example;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AppTest {
 
     @Test
-    void sampleTest() {
-        assertTrue(true);
+    public void greetingShouldContainNameAndVersion() {
+        String result = App.getGreeting("Aerika");
+        // Adjust version if you change it in App.java
+        assertEquals("Hello, Aerika! - demo-java-app v1.3", result);
     }
 }
